@@ -7,9 +7,9 @@ Works on both past and future dates.
 
 ### Methods
 
-#### `moment().twitter()` (alias `moment().twitterLong()`)
+#### `moment().twitter()`
 
-Web-friendly formatting.
+Web-friendly formatting (alias `moment().twitterLong()`).
 
 __Examples:__
 
