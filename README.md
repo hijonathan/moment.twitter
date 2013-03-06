@@ -67,3 +67,4 @@ moment(moment() + 6048e5).twitter()
 1. Write some bad ass tests.
 2. Compile this with grunt, I guess.
 3. Get @timrwood to close timrwood/momentjs.com#24
+4. npm, require, commonjs, etc support.
