@@ -8,7 +8,6 @@ hour = 36e5
 day = 864e5
 week = 6048e5
 
-monthFormat = 'MMM D'
 formats =
     seconds:
         short: 's'
@@ -25,13 +24,13 @@ formats =
 
 
 moment.fn.twitter = moment.fn.twitterLong = ->
-    @twitterFormat 'long'
+    twitterFormat.call @, 'long'
 
 moment.fn.twitterShort = ->
-    @twitterFormat 'short'
+    twitterFormat.call @, 'short'
 
 
-moment.fn.twitterFormat = (format) ->
+twitterFormat = (format) ->
     diff = Math.abs @diff moment()
     unit = null
     num = null
@@ -45,18 +44,21 @@ moment.fn.twitterFormat = (format) ->
         unit = 'minutes'
     else if diff < day
         unit = 'hours'
-    else if format is 'short' and diff < week
-        unit = 'days'
+    else if format is 'short'
+        if diff < week
+            unit = 'days'
+        else
+            return @format 'M/D/YY'
+    else
+        return @format 'MMM D'
 
-    unless unit
-        return @format monthFormat
     unless num and unit
         # Format the number
         num = moment.duration(diff)[unit]()
 
     unitStr = unit = formats[unit][format]
-    if format is 'long'
-        unitStr = Humanize.pluralize num, unit
+    if format is 'long' and num > 1
+        unitStr += 's'
 
     return num + unitStr
 
