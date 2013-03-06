@@ -60,3 +60,10 @@ Times greater than 6 days are slash-separated.
 moment(moment() + 6048e5).twitter()
 // 3/7/86
 ```
+
+
+### TODO
+
+1. Write some bad ass tests.
+2. Compile this with grunt, I guess.
+3. Get @timrwood to close timrwood/momentjs.com#24
