@@ -1,28 +1,3 @@
-moment = if require? then require('moment') else @moment
-
-
-# Times in millisecond
-second = 1e3
-minute = 6e4
-hour = 36e5
-day = 864e5
-week = 6048e5
-
-formats =
-    seconds:
-        short: 's'
-        long: ' sec'
-    minutes:
-        short: 'm'
-        long: ' min'
-    hours:
-        short: 'h'
-        long: ' hr'
-    days:
-        short: 'd'
-        long: ' day'
-
-
 moment.fn.twitter = moment.fn.twitterLong = ->
     twitterFormat.call @, 'long'
 
@@ -62,8 +37,23 @@ twitterFormat = (format) ->
 
     return num + unitStr
 
+# Times in millisecond
+second = 1e3
+minute = 6e4
+hour = 36e5
+day = 864e5
+week = 6048e5
 
-if module?
-    module.exports = moment
-else
-    @moment = moment
+formats =
+    seconds:
+        short: 's'
+        long: ' sec'
+    minutes:
+        short: 'm'
+        long: ' min'
+    hours:
+        short: 'h'
+        long: ' hr'
+    days:
+        short: 'd'
+        long: ' day'
