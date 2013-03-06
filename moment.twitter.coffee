@@ -12,7 +12,7 @@ formats =
     seconds:
         short: 's'
         long: ' sec'
-    months:
+    minutes:
         short: 'm'
         long: ' min'
     hours:
