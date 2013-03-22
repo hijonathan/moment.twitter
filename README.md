@@ -43,21 +43,21 @@ __Examples:__
 Units single characters, and there are no spaces.
 
 ```
-moment(moment() + (36e5 * 5)).twitter()
+moment(moment() + (36e5 * 5)).twitterShort()
 // 5h
 ```
 
 Times greater than 24 hours but more than 6 days are converted to days.
 
 ```
-moment(moment() + (864e5 * 6)).twitter()
+moment(moment() + (864e5 * 6)).twitterShort()
 // 6d
 ```
 
 Times greater than 6 days are slash-separated.
 
 ```
-moment(moment() + 6048e5).twitter()
+moment(moment() + 6048e5).twitterShort()
 // 3/7/86
 ```
 
