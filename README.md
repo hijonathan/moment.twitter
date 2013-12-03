@@ -1,4 +1,4 @@
-Twitter-like Date Formatter
+Twitter-like Date Formatter  [![Build Status](https://travis-ci.org/hijonathan/moment.twitter.png?branch=master)](https://travis-ci.org/hijonathan/moment.twitter)
 ==================================================
 
 moment.twitter.js is an extension to moment.js that formats dates like Twitter.
