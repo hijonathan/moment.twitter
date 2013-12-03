@@ -1,3 +1,10 @@
+hasModule = typeof module isnt 'undefined' and module.exports and typeof require isnt 'undefined'
+
+if hasModule?
+    moment = require 'moment'
+else
+    moment = @moment
+
 moment.fn.twitter = moment.fn.twitterLong = ->
     twitterFormat.call @, 'long'
 
@@ -57,3 +64,9 @@ formats =
     days:
         short: 'd'
         long: ' day'
+
+
+if hasModule
+    module.exports = moment
+else
+    @moment = moment
