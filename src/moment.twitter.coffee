@@ -1,17 +1,33 @@
 hasModule = typeof module isnt 'undefined' and module.exports and typeof require isnt 'undefined'
-
 if hasModule?
     moment = require 'moment'
 else
     moment = @moment
 
-moment.fn.twitter = moment.fn.twitterLong = ->
-    twitterFormat.call @, 'long'
 
-moment.fn.twitterShort = ->
-    twitterFormat.call @, 'short'
+# Times in millisecond
+second = 1e3
+minute = 6e4
+hour = 36e5
+day = 864e5
+week = 6048e5
+
+formats =
+    seconds:
+        short: 's'
+        long: ' sec'
+    minutes:
+        short: 'm'
+        long: ' min'
+    hours:
+        short: 'h'
+        long: ' hr'
+    days:
+        short: 'd'
+        long: ' day'
 
 
+# This function does most of the work.
 twitterFormat = (format) ->
     diff = Math.abs @diff moment()
     unit = null
@@ -44,26 +60,13 @@ twitterFormat = (format) ->
 
     return num + unitStr
 
-# Times in millisecond
-second = 1e3
-minute = 6e4
-hour = 36e5
-day = 864e5
-week = 6048e5
 
-formats =
-    seconds:
-        short: 's'
-        long: ' sec'
-    minutes:
-        short: 'm'
-        long: ' min'
-    hours:
-        short: 'h'
-        long: ' hr'
-    days:
-        short: 'd'
-        long: ' day'
+# Exposed shorthand methods.
+moment.fn.twitterLong = ->
+    twitterFormat.call @, 'long'
+
+moment.fn.twitter = moment.fn.twitterShort = ->
+    twitterFormat.call @, 'short'
 
 
 if hasModule
