@@ -38,11 +38,11 @@ module.exports = (grunt) ->
         _release:
             options:
                 bump: false
-                add: false
-                commit: false
-                tag: false
-                push: false
-                pushTags: false
+                add: true
+                commit: true
+                tag: true
+                push: true
+                pushTags: true
                 npm: true
 
     grunt.loadNpmTasks 'grunt-coffeelint'
