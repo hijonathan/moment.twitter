@@ -30,7 +30,29 @@ module.exports = (grunt) ->
             all:
                 files: 'main.js': 'src/**/*.coffee'
 
+        bump:
+            options:
+                files: ['package.json', 'bower.json']
+                commitFiles: ['-a']
+
+        _release:
+            options:
+                bump: false
+                add: false
+                commit: false
+                tag: false
+                push: false
+                pushTags: false
+                npm: true
+
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
+    grunt.loadNpmTasks 'grunt-bump'
+    grunt.loadNpmTasks 'grunt-release'
 
-    grunt.registerTask 'default', ['coffeelint', 'coffee']
+    grunt.registerTask 'build', ['coffeelint', 'coffee']
+    grunt.registerTask 'default', ['build']
+    grunt.renameTask 'release', '_release'
+
+    grunt.registerTask 'release', (target='') ->
+        grunt.task.run ["bump-only:#{target}", 'build', "_release:#{target}"]

@@ -1,6 +1,6 @@
 {
   "name": "moment.twitter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An extension to moment.js that formats dates like Twitter",
   "main": "main.js",
   "scripts": {
@@ -31,6 +31,8 @@
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-coffee": "~0.7.0",
-    "grunt-coffeelint": "0.0.7"
+    "grunt-coffeelint": "0.0.7",
+    "grunt-release": "~0.6.0",
+    "grunt-bump": "0.0.13"
   }
 }
