@@ -17,12 +17,9 @@
     "date-format",
     "twitter"
   ],
-  "author": "hijonathan",
+  "author": "Jonathan Kim <me@jonathan-kim.com> (http://jonathan-kim.com)",
   "contributors": [
-    {
-      "name": "Nathan Bowser",
-      "email": "nathan.bowser@spiderstrategies.com"
-    }
+    "Nathan Bowser <nathan.bowser@spiderstrategies.com>"
   ],
   "license": "BSD-2-Clause",
   "bugs": {
