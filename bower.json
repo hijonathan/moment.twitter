@@ -1,0 +1,28 @@
+{
+  "name": "moment.twitter",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hijonathan/moment.twitter",
+  "authors": [
+    "Jonathan Kim <me@jonathan-kim.com>"
+  ],
+  "description": "An extension to moment.js that formats dates like Twitter",
+  "main": "main.js",
+  "keywords": [
+    "momentjs",
+    "moment",
+    "date",
+    "date-format",
+    "twitter"
+  ],
+  "license": "BSD-2-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.4.0"
+  }
+}
