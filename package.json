@@ -1,6 +1,6 @@
 {
   "name": "moment.twitter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "An extension to moment.js that formats dates like Twitter",
   "main": "main.js",
   "scripts": {
