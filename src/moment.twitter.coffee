@@ -1,5 +1,5 @@
-hasModule = typeof module isnt 'undefined' and module.exports and typeof require isnt 'undefined'
-if hasModule?
+hasModule = module?.exports? and require?
+if hasModule
     moment = require 'moment'
 else
     moment = @moment
