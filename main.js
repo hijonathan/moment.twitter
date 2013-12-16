@@ -1,9 +1,9 @@
 (function() {
   var day, formats, hasModule, hour, minute, moment, second, twitterFormat, week;
 
-  hasModule = typeof module !== 'undefined' && module.exports && typeof require !== 'undefined';
+  hasModule = ((typeof module !== "undefined" && module !== null ? module.exports : void 0) != null) && (typeof require !== "undefined" && require !== null);
 
-  if (hasModule != null) {
+  if (hasModule) {
     moment = require('moment');
   } else {
     moment = this.moment;
