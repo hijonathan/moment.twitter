@@ -19,7 +19,7 @@ moment().twitter()
 ```
 
 ```html
-// Browser
+<!-- Browser -->
 <script type="text/javascript" src="/moment.js"></script>
 <script type="text/javascript" src="/moment-twitter.js"></script>
 <script type="text/javascript">
