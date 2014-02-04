@@ -28,7 +28,7 @@ module.exports = (grunt) ->
 
         coffee:
             all:
-                files: 'main.js': 'src/**/*.coffee'
+                files: 'moment-twitter.js': 'src/**/*.coffee'
 
         bump:
             options:

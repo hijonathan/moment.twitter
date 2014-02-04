@@ -1,5 +1,5 @@
-var moment = require('./main')
-  , assert = require('assert')
+var moment = require('./moment-twitter'),
+    assert = require('assert')
 
 assert.equal(moment().subtract('seconds', 25).twitter(), '25s')
 assert.equal(moment().subtract('seconds', 25).twitterLong(), '25 secs')
