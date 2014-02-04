@@ -7,14 +7,18 @@ moment.twitter.js is an extension to moment.js that formats dates like Twitter.
 
 Works with AMD, CommonJS and browser environments.
 
-```
+```javascript
 // AMD
 define(['moment-twitter'], function(moment) { moment().twitter() });
+```
 
+```javascript
 // CommonJS
 var moment = require('moment-twitter');
 moment().twitter()
+```
 
+```html
 // Browser
 <script type="text/javascript" src="/moment.js"></script>
 <script type="text/javascript" src="/moment-twitter.js"></script>
