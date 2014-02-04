@@ -1,10 +1,3 @@
-hasModule = module?.exports? and require?
-if hasModule
-    moment = require 'moment'
-else
-    moment = @moment
-
-
 # Times in millisecond
 second = 1e3
 minute = 6e4
@@ -27,49 +20,59 @@ formats =
         long: ' day'
 
 
-# This function does most of the work.
-twitterFormat = (format) ->
-    diff = Math.abs @diff moment()
-    unit = null
-    num = null
+initialize = (moment) ->
 
-    if diff <= second
-        unit = 'seconds'
-        num = 1
-    else if diff < minute
-        unit = 'seconds'
-    else if diff < hour
-        unit = 'minutes'
-    else if diff < day
-        unit = 'hours'
-    else if format is 'short'
-        if diff < week
-            unit = 'days'
+    # This function does most of the work.
+    twitterFormat = (format) ->
+        diff = Math.abs @diff moment()
+        unit = null
+        num = null
+
+        if diff <= second
+            unit = 'seconds'
+            num = 1
+        else if diff < minute
+            unit = 'seconds'
+        else if diff < hour
+            unit = 'minutes'
+        else if diff < day
+            unit = 'hours'
+        else if format is 'short'
+            if diff < week
+                unit = 'days'
+            else
+                return @format 'M/D/YY'
         else
-            return @format 'M/D/YY'
-    else
-        return @format 'MMM D'
+            return @format 'MMM D'
 
-    unless num and unit
-        # Format the number
-        num = moment.duration(diff)[unit]()
+        unless num and unit
+            # Format the number
+            num = moment.duration(diff)[unit]()
 
-    unitStr = unit = formats[unit][format]
-    if format is 'long' and num > 1
-        unitStr += 's'
+        unitStr = unit = formats[unit][format]
+        if format is 'long' and num > 1
+            unitStr += 's'
 
-    return num + unitStr
+        return num + unitStr
 
 
-# Exposed shorthand methods.
-moment.fn.twitterLong = ->
-    twitterFormat.call @, 'long'
+    # Exposed shorthand methods.
+    moment.fn.twitterLong = ->
+        twitterFormat.call @, 'long'
 
-moment.fn.twitter = moment.fn.twitterShort = ->
-    twitterFormat.call @, 'short'
+    moment.fn.twitter = moment.fn.twitterShort = ->
+        twitterFormat.call @, 'short'
+
+    return moment
 
 
-if hasModule
-    module.exports = moment
-else
-    @moment = moment
+if typeof define is 'function' and define.amd
+    # AMD. Register as an anonymous module.
+    define 'moment-twitter', ['moment'], (moment) ->
+        @moment = initialize moment
+else if typeof module isnt 'undefined'
+    # CommonJS
+    module.exports = initialize(require('moment'))
+else if typeof window isnt "undefined" and window.moment
+    # Browser globals
+    @moment = initialize @moment
