@@ -3,6 +3,26 @@ Twitter-like Date Formatter  [![Build Status](https://travis-ci.org/hijonathan/m
 
 moment.twitter.js is an extension to moment.js that formats dates like Twitter.
 
+### Usage
+
+Works with AMD, CommonJS and browser environments.
+
+```
+// AMD
+define(['moment-twitter'], function(moment) { moment().twitter() });
+
+// CommonJS
+var moment = require('moment-twitter');
+moment().twitter()
+
+// Browser
+<script type="text/javascript" src="/moment.js"></script>
+<script type="text/javascript" src="/moment-twitter.js"></script>
+<script type="text/javascript">
+    moment().twitter();
+</script>
+```
+
 Works on both past and future dates.
 
 ### Methods
