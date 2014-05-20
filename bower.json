@@ -6,7 +6,7 @@
     "Jonathan Kim <me@jonathan-kim.com>"
   ],
   "description": "An extension to moment.js that formats dates like Twitter",
-  "main": "main.js",
+  "main": "moment-twitter.js",
   "keywords": [
     "momentjs",
     "moment",
