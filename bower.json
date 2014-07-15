@@ -1,6 +1,6 @@
 {
   "name": "moment.twitter",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/hijonathan/moment.twitter",
   "authors": [
     "Jonathan Kim <me@jonathan-kim.com>"
@@ -23,6 +23,6 @@
     "tests"
   ],
   "dependencies": {
-    "moment": "~2.4.0"
+    "moment": "^2.4.0"
   }
 }
