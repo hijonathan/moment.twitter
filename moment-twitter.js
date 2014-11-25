@@ -32,11 +32,13 @@
 
   initialize = function(moment) {
     var twitterFormat;
-    twitterFormat = function(format) {
-      var diff, num, unit, unitStr;
-      diff = Math.abs(this.diff(moment()));
+    twitterFormat = function(format, noPrefix) {
+      var diff, now, num, prefix, unit, unitStr;
+      now = moment();
+      diff = Math.abs(this.diff(now));
       unit = null;
       num = null;
+      prefix = '';
       if (diff <= second) {
         unit = 'seconds';
         num = 1;
@@ -50,9 +52,11 @@
         if (diff < week) {
           unit = 'days';
         } else {
+          noPrefix = true;
           return this.format('M/D/YY');
         }
       } else {
+        noPrefix = true;
         return this.format('MMM D');
       }
       if (!(num && unit)) {
@@ -62,13 +66,16 @@
       if (format === 'long' && num > 1) {
         unitStr += 's';
       }
-      return num + unitStr;
+      if (now.diff(this) < 0 && noPrefix !== true) {
+        prefix = '-';
+      }
+      return prefix + num + unitStr;
     };
-    moment.fn.twitterLong = function() {
-      return twitterFormat.call(this, 'long');
+    moment.fn.twitterLong = function(noPrefix) {
+      return twitterFormat.call(this, 'long', noPrefix);
     };
-    moment.fn.twitter = moment.fn.twitterShort = function() {
-      return twitterFormat.call(this, 'short');
+    moment.fn.twitter = moment.fn.twitterShort = function(noPrefix) {
+      return twitterFormat.call(this, 'short', noPrefix);
     };
     return moment;
   };

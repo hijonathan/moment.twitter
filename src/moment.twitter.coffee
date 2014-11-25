@@ -23,10 +23,12 @@ formats =
 initialize = (moment) ->
 
     # This function does most of the work.
-    twitterFormat = (format) ->
-        diff = Math.abs @diff moment()
+    twitterFormat = (format, noPrefix) ->
+        now = moment()
+        diff = Math.abs @diff now
         unit = null
         num = null
+        prefix = ''
 
         if diff <= second
             unit = 'seconds'
@@ -41,8 +43,10 @@ initialize = (moment) ->
             if diff < week
                 unit = 'days'
             else
+                noPrefix = true
                 return @format 'M/D/YY'
         else
+            noPrefix = true
             return @format 'MMM D'
 
         unless num and unit
@@ -52,16 +56,19 @@ initialize = (moment) ->
         unitStr = unit = formats[unit][format]
         if format is 'long' and num > 1
             unitStr += 's'
+        
+        if now.diff(@) < 0 and noPrefix isnt true
+            prefix = '-'
 
-        return num + unitStr
+        return prefix + num + unitStr
 
 
     # Exposed shorthand methods.
-    moment.fn.twitterLong = ->
-        twitterFormat.call @, 'long'
+    moment.fn.twitterLong = (noPrefix) ->
+        twitterFormat.call @, 'long', noPrefix
 
-    moment.fn.twitter = moment.fn.twitterShort = ->
-        twitterFormat.call @, 'short'
+    moment.fn.twitter = moment.fn.twitterShort = (noPrefix) ->
+        twitterFormat.call @, 'short', noPrefix
 
     return moment
 
