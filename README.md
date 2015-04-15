@@ -40,21 +40,21 @@ __Examples:__
 Formats time relative to current time.
 
 ```
-moment(moment() + (36e5 * 5)).twitter()
+moment(moment() + (36e5 * 5)).twitterLong()
 // 5 hours
 ```
 
 Yes, it does smart pluralization.
 
 ```
-moment(moment() + 36e5).twitter()
+moment(moment() + 36e5).twitterLong()
 // 1 hour
 ```
 
 Times greater than 24 hours are converted to dates like `Mar 7`
 
 ```
-moment(moment() + 6048e5).twitter()
+moment(moment() + 6048e5).twitterLong()
 // Mar 7
 ```
 
