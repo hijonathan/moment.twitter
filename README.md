@@ -71,7 +71,7 @@ moment(moment() + (36e5 * 5)).twitterShort()
 // 5h
 ```
 
-Times greater than 24 hours but more than 6 days are converted to days.
+Times between 24 hours and 6 days are converted to days.
 
 ```
 moment(moment() + (864e5 * 6)).twitterShort()
