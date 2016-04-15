@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/hijonathan/moment.twitter/issues"
   },
-  "dependencies": {
+  "peerDependencies": {
     "moment": "^2.4.0"
   },
   "devDependencies": {
